@@ -1,7 +1,6 @@
 <template>
   <div class="alert alert-dark">
       <h3 class="alert-heading">{{x}} + {{y}} = ?</h3>
-      <h3 class="timer">Оставшееся время на вопрос : {{ time }}</h3>
       <hr>
       <div class="buttons">
           <button class="btn btn-success" v-for="number in answers" @click="onAnswer(number)">{{number}}</button>
@@ -16,7 +15,6 @@
             return{
                 x:Randomize(this.settings.from, this.settings.to),
                 y:Randomize(this.settings.from, this.settings.to),
-                time:(10)
             }
         },
         computed: {

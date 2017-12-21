@@ -10,7 +10,7 @@
     <app-start-screen v-if="state == 'start'" @onStart="onStart"></app-start-screen>
     <app-question v-else-if="state == 'question'" @success="onSuccess" @error="onError" :settings="levels[level]"></app-question>
     <app-message v-else-if="state == 'message'" :type="message.type" :text="message.text" @onNext="onNext"></app-message>
-    <app-result v-else-if="state == 'result'" :stats="stats" @repeat="onStart" @next="nextLevel" @again="again" :level="level"></app-result>
+    <app-result v-else-if="state == 'result'" :stats="stats" @next="nextLevel" @again="again" :level="level"></app-result>
     <div v-else>Unknown state</div>
     </transition>
     </div>
@@ -25,32 +25,39 @@ export default {
       state: 'start',
       stats:{
         success: 0,
-        error: 0
+        error: 0,
+        score:0
       },
       message:{
         type: '',
         text: ''
       },
-      questMax: 5,
+      questMax: 15,
       level:0,
       levels:[
         {
         from: 10,
-        to: 500,
-        range: 75,
-        variants:3
+        to: 100,
+        range: 65,
+        variants:3,
         },
         {
-        from: 500,
+        from: 100,
+        to: 1000,
+        range: 100,
+        variants:4,
+        },
+        {
+        from: 1000,
         to: 5000,
         range: 245,
-        variants:6
+        variants:6,
         },
         {
         from: 5000,
         to: 50000,
-        range: 1500,
-        variants:9
+        range: 750,
+        variants:9,
         }
       ]
     }
@@ -76,6 +83,18 @@ export default {
       this.message.text = 'Правильный ответ';
       this.message.type = 'success';
       this.stats.success++;
+      if(this.level == 0){
+        this.stats.score = this.stats.score + 100;
+      }
+      else if(this.level == 1){
+        this.stats.score = this.stats.score + 200;
+      }
+      else if(this.level == 2){
+        this.stats.score = this.stats.score + 300;
+      }
+      else{
+        this.stats.score = this.stats.score + 400;
+      }
     },
     onError(msg){
       this.state = 'message';
@@ -100,6 +119,7 @@ export default {
       this.stats.success = 0;
       this.stats.error = 0;
       this.level = 0;
+      this.stats.score = 0;
     }
   }
 }
