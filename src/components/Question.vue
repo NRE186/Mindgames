@@ -3,7 +3,7 @@
       <h3 class="alert-heading">{{x}} + {{y}} = ?</h3>
       <hr>
       <div class="buttons">
-          <button class="btn btn-success" v-for="number in answers" @click="onAnswer(number)">{{number}}</button>
+          <button class="btn btn-success" v-for="number in answers" @click="Answer(number)">{{number}}</button>
       </div>
   </div>
 </template>
@@ -13,14 +13,17 @@
         props: ['settings'],
         data(){
             return{
+                // Calculate x and y
                 x:Randomize(this.settings.from, this.settings.to),
                 y:Randomize(this.settings.from, this.settings.to),
             }
         },
         computed: {
+            // Conservation right answer for next work
             good(){
                 return this.x + this.y;
             },
+            // Calculate other answers
             answers(){
                 var res = [this.good]
                 while(res.length < this.settings.variants){
@@ -35,7 +38,8 @@
             }
         },
         methods: {
-            onAnswer(num){
+            // Right or Not
+            Answer(num){
                 if(num == this.good){
                     this.$emit('success');
                 }
@@ -45,6 +49,7 @@
             }
         }
     }
+    // Function for calculation numbers
     function Randomize(min,max){
         let dif = max-min;
         return Math.floor(Math.random() * (dif + 1) + min);

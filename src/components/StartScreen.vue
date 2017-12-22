@@ -1,7 +1,7 @@
 <template>
   <div class="alert alert-secondary">
       <h3>Готов?</h3>
-      <button class="btn btn-success" @click="$emit('onStart')">Начать</button>
+      <button class="btn btn-success" @click="$emit('Start')">Начать</button>
   </div>
 </template>
 
