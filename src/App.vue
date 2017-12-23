@@ -9,10 +9,10 @@
     <!-- Main container for components -->
     <div class="box">
     <transition name="flip" mode="out-in">
-    <app-start-screen v-if="state == 'start'" @Start="Start"></app-start-screen>
-    <app-question v-else-if="state == 'question'" @success="Success" @error="Error" :settings="levels[level]"></app-question>
-    <app-message v-else-if="state == 'message'" :type="message.type" :text="message.text" @Next="next"></app-message>
-    <app-result v-else-if="state == 'result'" :stats="stats" @next="nextLevel" @again="Start" :level="level"></app-result>
+    <start-screen v-if="state == 'start'" @Start="Start"></start-screen>
+    <question v-else-if="state == 'question'" @success="Success" @error="Error" :settings="levels[level]"></question>
+    <message v-else-if="state == 'message'" :type="message.type" :text="message.text" @Next="next"></message>
+    <result v-else-if="state == 'result'" :stats="stats" @next="nextLevel" @again="Start" :level="level"></result>
     <div v-else>Unknown state</div>
     </transition>
     </div>

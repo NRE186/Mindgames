@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import AppStartScreen from './components/StartScreen.vue';
-import AppMessage from './components/Message.vue';
-import AppQuestion from './components/Question.vue';
-import AppResult from './components/Result.vue';
+import StartScreen from './components/StartScreen.vue';
+import Message from './components/Message.vue';
+import Question from './components/Question.vue';
+import Result from './components/Result.vue';
 
-Vue.component('AppStartScreen', AppStartScreen);
-Vue.component('AppMessage', AppMessage);
-Vue.component('AppQuestion', AppQuestion);
-Vue.component('AppResult', AppResult);
+Vue.component('StartScreen', StartScreen);
+Vue.component('Message', Message);
+Vue.component('Question', Question);
+Vue.component('Result', Result);
 
 new Vue({
   el: '#app',

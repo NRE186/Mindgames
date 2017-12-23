@@ -1,7 +1,7 @@
 <template>
   <div class="alert alert-info">
-    <h3>Правильные ответы текущего уровня : {{ stats.success }}</h3>
-    <h3>Неправильные ответы текущего уровня : {{ stats.error }}</h3>
+    <h3>Правильные ответы  : {{ stats.success }}</h3>
+    <h3>Неправильные ответы  : {{ stats.error }}</h3>
     <h3>Очки : {{ stats.score }}</h3>
     <hr>
     <button class="btn btn-outline-primary" @click="$emit('again')"><i class="fas fa-redo"></i><span class="left">Начать сначала</span></button>
