@@ -33,7 +33,7 @@
                     }
                 }
                 return res.sort(function(){
-                    return Math.random() > 0.5;
+                    return Math.random() > 0.45;
                 });
             }
         },
@@ -54,6 +54,7 @@
         let dif = max-min;
         return Math.floor(Math.random() * (dif + 1) + min);
     }
+
 </script>
 
 <style scoped>
@@ -63,7 +64,7 @@
     .buttons{
         display: flex;
         justify-content: space-around;
-        padding-top: 20px; 
+        padding-top: 20px;
     }
     .btn{
         width: 10%;

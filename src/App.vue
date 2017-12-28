@@ -24,7 +24,7 @@ export default {
   name: 'app',
   data () {
     return {
-      // First state  
+      // First state
       state: 'start',
       // Stats for result component
       stats:{
@@ -32,7 +32,7 @@ export default {
         error: 0,
         score:0
       },
-      // Message template 
+      // Message template
       message:{
         type: '',
         text: ''
@@ -120,7 +120,7 @@ export default {
       this.message.type = 'danger';
       this.stats.error++;
     },
-    // I forget what is it  ¯\_(ツ)_/¯
+    // Next lvl if they have or result
     next(){
       if(this.questDone < this.questMax){
         this.state = 'question';
@@ -131,8 +131,10 @@ export default {
     },
     // Method for switch beetween levels
     nextLevel(){
+      this.state = 'question';
       this.level++;
-      this.onStart();
+      this.stats.success = 0;
+      this.stats.error = 0;
     }
   }
 }

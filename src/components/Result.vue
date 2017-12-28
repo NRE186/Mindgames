@@ -1,5 +1,9 @@
 <template>
   <div class="alert alert-info">
+    <h3 v-if="this.level == 0">Уровень 1 завершён</h3>
+    <h3 v-else-if="this.level == 1">Уровень 2 завершён</h3>
+    <h3 v-else-if="this.level == 2">Уровень 3 завершён</h3>
+    <h3 v-else-if="this.level == 3">Уровень 4 завершён</h3>
     <h3>Правильные ответы  : {{ stats.success }}</h3>
     <h3>Неправильные ответы  : {{ stats.error }}</h3>
     <h3>Очки : {{ stats.score }}</h3>
@@ -23,7 +27,7 @@
     padding-top: 20px;
   }
   .left{
-    padding-left: 10px; 
+    padding-left: 10px;
   }
   .right{
     padding-right: 10px;
