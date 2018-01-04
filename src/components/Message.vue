@@ -18,7 +18,7 @@
     text-align: center;
   }
   .btn{
-    margin-top: 15px; 
-    margin-bottom: 15px; 
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 </style>

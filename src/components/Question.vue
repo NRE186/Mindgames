@@ -11,13 +11,13 @@
 <script>
     export default{
         props: ['settings'],
-        data(){
-            return{
-                // Calculate x and y
-                x:Randomize(this.settings.from, this.settings.to),
-                y:Randomize(this.settings.from, this.settings.to),
-            }
-        },
+      data: function () {
+        return {
+          // Calculate x and y
+          x: Randomize(this.settings.from, this.settings.to),
+          y: Randomize(this.settings.from, this.settings.to)
+        }
+      },
         computed: {
             // Conservation right answer for next work
             good(){
@@ -25,8 +25,8 @@
             },
             // Calculate other answers
             answers(){
-                var res = [this.good]
-                while(res.length < this.settings.variants){
+              var res = [this.good];
+              while(res.length < this.settings.variants){
                     let num = Randomize(this.good - this.settings.range, this.good + this.settings.range);
                     if(res.indexOf(num) === -1){
                         res.push(num);
@@ -39,22 +39,24 @@
         },
         methods: {
             // Right or Not
-            Answer(num){
-                if(num == this.good){
-                    this.$emit('success');
-                }
-                else{
-                    this.$emit('error', `${this.x} + ${this.y} = ${this.good}`);
-                }
+          Answer: function (num) {
+            if (num === this.good) {
+              this.$emit('success');
             }
+            else {
+              this.$emit('error', `${this.x} + ${this.y} = ${this.good}`);
+            }
+          }
         }
     }
     // Function for calculation numbers
+    /**
+     * @return {number}
+     */
     function Randomize(min,max){
         let dif = max-min;
         return Math.floor(Math.random() * (dif + 1) + min);
     }
-
 </script>
 
 <style scoped>
