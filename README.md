@@ -1,6 +1,6 @@
 # Mindgames(frontend)
 
-> ICO toolbox frontend based on VueJS
+> Some mini-games based on VueJS
 
 ## Build Setup
 
