@@ -1,17 +1,25 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
 
-import StartScreen from './components/StartScreen.vue';
-import Message from './components/Message.vue';
-import Question from './components/Question.vue';
-import Result from './components/Result.vue';
+import MainScreen from './components/Main.vue'
 
-Vue.component('StartScreen', StartScreen);
-Vue.component('Message', Message);
-Vue.component('Question', Question);
-Vue.component('Result', Result);
+import MathMain from './components/Math/Math.vue'
+import MathStartScreen from './components/Math/StartScreen.vue'
+import MathMessage from './components/Math/Message.vue'
+import MathQuestion from './components/Math/Question.vue'
+import MathResult from './components/Math/Result.vue'
+
+Vue.component('MainScreen',MainScreen);
+Vue.component('MathMain', MathMain);
+Vue.component('MathStartScreen', MathStartScreen);
+Vue.component('MathMessage', MathMessage);
+Vue.component('MathQuestion', MathQuestion);
+Vue.component('MathResult', MathResult);
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  router
 })
+

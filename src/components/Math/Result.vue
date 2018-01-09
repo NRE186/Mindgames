@@ -58,4 +58,12 @@
     margin: 5px;
     margin-top: 15px;
   }
+  @media (max-width: 870px) {
+    .alert h2{
+      font-size: 26px;
+    }
+    .alert h3{
+      font-size: 22px;
+    }
+  }
 </style>
