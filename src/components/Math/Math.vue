@@ -125,7 +125,7 @@ export default {
           from: 5000,
           to: 50000,
           range: 750,
-          variants: 9,
+          variants: 8,
           variables : 6
         }
       ]
@@ -213,6 +213,7 @@ export default {
       this.level++;
       this.stats.lvl_success = 0;
       this.stats.lvl_errors = 0;
+      this.stats.multiplier = 1;
     }
   }
 }

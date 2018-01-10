@@ -7,6 +7,9 @@
       <div class="right">
         <ul>
           <li>
+            <router-link to="about">О проекте</router-link>
+          </li>
+          <li>
             <router-link to="records">Рекорды</router-link>
           </li>
           <li>
@@ -38,6 +41,15 @@
         <button type="button" class="btn btn-outline-info"><router-link to="ict">Начать</router-link></button>
       </div>
     </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../../assets/1.png" alt="Programming">
+        <div class="card-body">
+          <hr>
+          <h5 class="card-title">Программирование</h5>
+          <p class="card-text">Узнай насколько хорошо ты знаешь программирование</p>
+          <button type="button" class="btn btn-outline-info"><router-link to="programming">Начать</router-link></button>
+        </div>
+      </div>
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="../../assets/istoriyz.png" alt="History">
         <div class="card-body">
@@ -72,17 +84,17 @@ export default {
     margin-top: 20px !important;
   }
   .wrapper{
-    margin: 20px auto;
-    max-width: 1200px;
+    max-width: 100%;
   }
   .head{
     margin-top: 10px;
+    margin-left: 7.5%;
     max-height: 80px;
     font-size: 24px;
     display: flex;
   }
   .right{
-    margin-left: 50%;
+    margin-left: 51.5%;
   }
   .right li{
     padding-right: 30px;
@@ -90,13 +102,15 @@ export default {
   .cards{
     display: flex;
     justify-content: space-around;
+    margin-left: 5%;
+    margin-right: 5%;
   }
   .cards a{
     color: green !important;
   }
   .card{
     margin-top: 30px;
-    width: 22rem !important;;
+    width: 22rem !important;
   }
   .card-img-top {
     min-height: 357px;
@@ -107,9 +121,33 @@ export default {
   .card-title{
     margin-top: 25px;
   }
+  .card-text{
+    height: 50px;
+  }
   .btn{
     margin-top: 15px;
     width: 70%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+  @media (max-width: 1700px) {
+    *{
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 1590px) {
+    .card{
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+    .cards{
+      margin: 0;
+    }
+  }
+  @media (max-width: 1240px) {
+    *{
+      font-size: 17px;
+    }
   }
 </style>
 

@@ -69,7 +69,7 @@
         padding-top: 20px;
     }
     .btn{
-        width: 10%;
+        width: 15%;
         margin-bottom: 15px;
         border-radius: 10px;
     }
