@@ -12,14 +12,14 @@ var cacheFiles = [
   './dist/istoriyz.png',
   './dist/matg.jpg',
   './dist/informatika.jpg',
+  './dist/spinning-circles.svg',
   './favicon/apple-touch-icon.png',
   './favicon/favicon-32x32.png',
   './favicon/favicon-16x16.png',
   './favicon/manifest.json',
   './favicon/safari-pinned-tab.svg',
   'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',
-  'https://use.fontawesome.com/releases/v5.0.1/js/all.js',
-  'https://hello-site.ru//main/images/preloads/spinning-circles.svg'
+  'https://use.fontawesome.com/releases/v5.0.1/js/all.js'
 ]
 
 
