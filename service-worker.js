@@ -1,4 +1,3 @@
-/*
 // Set a name for the current cache
 var cacheName = '1.0';
 
@@ -112,4 +111,3 @@ self.addEventListener('fetch', function(e) {
       }) // end caches.match(e.request)
   ); // end e.respondWith
 });
-*/

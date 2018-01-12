@@ -12,11 +12,16 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },      {
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'url-loader?limit=1024&name=/fonts/[name].[ext]'
+        }
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -36,7 +41,7 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
     ]
   },
   resolve: {

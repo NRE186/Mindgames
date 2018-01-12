@@ -174,16 +174,16 @@ export default {
       this.stats.success++;
       this.stats.lvl_success++;
       if (this.level === 0) {
-        this.stats.score = (this.stats.score + this.points.one) * this.stats.multiplier;
+        this.stats.score = this.stats.score + (this.points.one * this.stats.multiplier);
       }
       else if (this.level === 1) {
-        this.stats.score = (this.stats.score + this.points.two) * this.stats.multiplier;
+        this.stats.score = (this.stats.score + (this.points.two) * this.stats.multiplier);
       }
       else if (this.level === 2) {
-        this.stats.score = (this.stats.score + this.points.three) * this.stats.multiplier;
+        this.stats.score = (this.stats.score + (this.points.three) * this.stats.multiplier);
       }
       else {
-        this.stats.score = (this.stats.score + this.points.four) * this.stats.multiplier;
+        this.stats.score = (this.stats.score + (this.points.four) * this.stats.multiplier);
       }
       if (this.stats.multiplier < 5){
         this.stats.multiplier = this.stats.multiplier + 0.5;
