@@ -18,7 +18,8 @@ var cacheFiles = [
   './favicon/manifest.json',
   './favicon/safari-pinned-tab.svg',
   'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',
-  'https://use.fontawesome.com/releases/v5.0.1/js/all.js'
+  'https://use.fontawesome.com/releases/v5.0.1/js/all.js',
+  'https://hello-site.ru//main/images/preloads/spinning-circles.svg'
 ]
 
 
