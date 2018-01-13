@@ -1,4 +1,3 @@
-> English
 # Mindgames(frontend)
 
 > Some mini-games based on VueJS
