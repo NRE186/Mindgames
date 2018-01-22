@@ -1,70 +1,106 @@
 <template>
-  <div class="training">
-    <h2>Математика</h2>
-    <div class="alert alert-light info">
-      <!-- Output score -->
-      <h4>Очки : {{ this.stats.score }}</h4>
-      <!-- Output multiplier -->
-      <span class="multiplier">x{{ this.stats.multiplier }}</span>
-      <!-- Heart system -->
-      <h4 class="hearts" v-if="this.stats.errors === 0">
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-      </h4>
-      <h4 class="hearts" v-else-if="this.stats.errors === 1">
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-      </h4>
-      <h4 class="hearts" v-else-if="this.stats.errors === 2">
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-      </h4>
-      <h4 class="hearts" v-else-if="this.stats.errors === 3">
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-      </h4>
-      <h4 class="hearts" v-else-if="this.stats.errors === 4">
-        <span class="heart"><i class="fas fa-heart"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-      </h4>
-      <h4 class="hearts" v-else-if="this.stats.errors === 5">
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-        <span class="cross"><i class="fas fa-times"></i></span>
-      </h4>
-    </div>
-    <!-- Progress bar -->
-    <div class="progress">
-    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" :style="progress"></div>
-    </div>
-    <!-- Main container for Math components -->
-    <div class="box">
-    <transition name="flip" mode="out-in">
-    <math-start-screen v-if="state == 'start'" @Start="Start"></math-start-screen>
-    <math-question v-else-if="state == 'question'" @success="Success" @error="Error" :settings="levels[level]"></math-question>
-    <math-message v-else-if="state == 'message'" :type="message.type" :text="message.text" @Next="next"></math-message>
-    <math-result v-else-if="state == 'result'" :stats="stats" @next="nextLevel" @again="Start" :level="level"></math-result>
-    <div v-else>Unknown state</div>
-    </transition>
-    </div>
-  </div>
+  <v-app>
+    <v-navigation-drawer
+      clipped
+      fixed
+      v-model="drawer"
+      app
+      dark
+    >
+      <v-list>
+        <v-list-tile
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.link">
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar app fixed clipped-left class="purple darken-4">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <router-link to="/" tag="span" style="cursor: pointer" class="ml-3">Mindgames</router-link>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn
+          flat
+          v-for="item in toolbar"
+          :key="item.title"
+          :to="item.link">
+          <v-icon left dark>{{ item.icon }}</v-icon>
+          {{ item.title }}
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    <v-content>
+      <v-layout
+        column
+        wrap
+      >
+        <v-flex xs12>
+          <v-container grid-list-xl class="train">
+                <v-alert  color="info" value="true">
+                  <h4>Очки : {{ this.stats.score }}</h4>
+                  <span class="multiplier">x{{ this.stats.multiplier }}</span>
+                  <h4 class="hearts" v-if="this.stats.errors === 0">
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                  </h4>
+                  <h4 class="hearts" v-else-if="this.stats.errors === 1">
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                  </h4>
+                  <h4 class="hearts" v-else-if="this.stats.errors === 2">
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                  </h4>
+                  <h4 class="hearts" v-else-if="this.stats.errors === 3">
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                  </h4>
+                  <h4 class="hearts" v-else-if="this.stats.errors === 4">
+                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                  </h4>
+                  <h4 class="hearts" v-else-if="this.stats.errors === 5">
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><i class="fas fa-times"></i></span>
+                  </h4></v-alert>
+                <v-progress-linear v-model="progress.width" height="12" color="success"></v-progress-linear>
+                <div class="box">
+                  <transition name="flip" mode="out-in">
+                    <math-start-screen v-if="state == 'start'" @Start="Start"></math-start-screen>
+                    <math-question v-else-if="state == 'question'" @success="Success" @error="Error" :settings="levels[level]"></math-question>
+                    <math-message v-else-if="state == 'message'" :type="message.type" :icon="message.icon" :text="message.text" @Next="next"></math-message>
+                    <math-result v-else-if="state == 'result'" :stats="stats" @next="nextLevel" @again="Start" :level="level"></math-result>
+                    <div v-else>Unknown state</div>
+                  </transition>
+                </div>
+          </v-container>
+        </v-flex>
+      </v-layout>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -72,6 +108,17 @@ export default {
   name: 'math',
   data() {
     return {
+      drawer: false,
+      menuItems: [
+        {icon: 'fa-address-book', title: 'О нас', link: '/about'},
+        {icon: 'fa-list-ul', title: 'Список рекордов', link: '/records'},
+        {icon: 'fa-user-plus', title: 'Регистрация', link: '/register'},
+        {icon: 'fa-sign-in-alt', title: 'Вход', link: '/login'}
+      ],
+      toolbar: [
+        {icon: 'fa-user-plus', title: 'Регистрация', link: '/register'},
+        {icon: 'fa-sign-in-alt', title: 'Вход', link: '/login'}
+      ],
       // First state
       state: 'start',
       // Stats for result component
@@ -93,10 +140,11 @@ export default {
       // Message template
       message: {
         type: '',
-        text: ''
+        text: '',
+        icon: ''
       },
       // Value of levels and number first level 0=1, 1=2 and etc
-      questMax: 10,
+      questMax: 3,
       level: 0,
       // Levels settings
       levels: [
@@ -151,7 +199,7 @@ export default {
     // Calculate width for progress bar
     progress(){
       return{
-        width: (this.questDone / this.questMax * 100) + '%'
+        width: (this.questDone / this.questMax * 100)
       };
     }
   },
@@ -161,16 +209,19 @@ export default {
       this.state = 'question';
       this.stats.success = 0;
       this.stats.errors = 0;
-      this.lvl_success = 0;
-      this.lvl_errors = 0;
+      this.stats.lvl_success = 0;
+      this.stats.lvl_errors = 0;
       this.stats.score = 0;
+      this.stats.multiplier = 1;
       this.level = 0;
+      this.progress.width = 0;
     },
     // If everything good to switch to a new question and final score
     Success: function () {
       this.state = 'message';
       this.message.text = 'Правильный ответ';
       this.message.type = 'success';
+      this.message.icon = 'check_circle';
       this.stats.success++;
       this.stats.lvl_success++;
       if (this.level === 0) {
@@ -193,7 +244,8 @@ export default {
     Error(msg){
       this.state = 'message';
       this.message.text = msg;
-      this.message.type = 'danger';
+      this.message.type = 'error';
+      this.message.icon = 'warning'
       this.stats.errors++;
       this.stats.lvl_errors++;
       this.stats.multiplier = 1;
@@ -214,25 +266,44 @@ export default {
       this.stats.lvl_success = 0;
       this.stats.lvl_errors = 0;
       this.stats.multiplier = 1;
+      this.progress.width = 0;
     }
   }
 }
 </script>
 
 <style scoped>
+  a{
+    color: white !important;
+  }
+  .toolbar__content .router-link-active{
+    font-size: large;
+    color: white !important;
+  }
+  .toolbar__side-icon {
+    color: white !important;
+  }
+  .train{
+    width: 50vw;
+    margin-top: 4vh;
+  }
+  .progress-linear__background{
+    border-radius: 15px;
+  }
+
   .info{
     margin-top: 20px;
     margin-bottom: 20px;
     border: 1px solid;
-    background-color: #424242 !important;
   }
   .info h4{
     color: white !important;
     margin-top: 4px;
+    font-size: 19px;
   }
   .multiplier{
     position: absolute;
-    top: 15px;
+    top: 17px;
     right: 450px;
     font-size: 22px;
     font-weight: bold;
@@ -248,23 +319,8 @@ export default {
   .cross{
     color: red;
   }
-  .training{
-    max-width: 900px;
-    margin: 20px auto;
-  }
-  .training h2{
-    text-align: center;
-  }
   .box{
     margin: 15px 0;
-  }
-  .progress{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-color: #7c7c7c;
-  }
-  .progress-bar{
-    transition: width 1s;
   }
   .flip-enter-active{
     animation: flipInX 0.3s linear;
@@ -280,31 +336,42 @@ export default {
     from{transform: rotateX(0deg);}
     to{transform: rotateX(90deg);}
   }
-  @media (max-width: 935px) {
-    .training{
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-    .training h1{
-      font-size: 28px;
-    }
-    .multiplier{
-      right: 420px;
-    }
-  }
-  @media (max-width: 850px) {
-    .multiplier{
-      right: 400px;
-    }
-  }
-  @media (max-width: 800px) {
-    .multiplier{
-      display: none;
-    }
-  }
-  @media (max-width: 870px) {
-    .training h1{
-      font-size: 28px;
-    }
-  }
+   @media (max-width: 1300px) {
+      .multiplier{
+        display: none;
+      }
+      .train{
+        width: 65vw;
+      }
+   }
+      @media (max-width: 1000px) {
+      .train{
+        width: 70vw;
+      }
+   }
+      @media (max-width: 770px) {
+      .train{
+        width: 75vw;
+      }
+   }
+      @media (max-width: 630px) {
+      .train{
+        width: 80vw;
+      }
+   }
+      @media (max-width: 550px) {
+      .train{
+        width: 85vw;
+      }
+   }
+      @media (max-width: 510px) {
+      .train{
+        width: 90vw;
+      }
+   }
+      @media (max-width: 430px) {
+      .train{
+        width: 100vw;
+      }
+   } 
 </style>

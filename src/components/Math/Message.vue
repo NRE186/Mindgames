@@ -1,14 +1,13 @@
 <template>
-  <div class="alert" :class="'alert-' + type">
-    <h3 alert-heading>{{ text }}</h3>
-    <hr>
-    <button class="btn btn-primary" @click="$emit('Next')">Следующий вопрос</button>
-  </div>
+  <v-alert :color=type :icon=icon value="true">
+      <h2>{{ text }}</h2>
+    <v-btn color="teal darkern-4"  @click="$emit('Next')">Следующий вопрос</v-btn>
+    </v-alert>
 </template>
 
 <script>
   export default{
-    props: ['type', 'text']
+    props: ['type', 'text', 'icon']
   }
 </script>
 
@@ -18,7 +17,7 @@
     text-align: center;
   }
   .btn{
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
 </style>

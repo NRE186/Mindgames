@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-primary">
+  <v-alert color="info" icon="info" :value="true">
     <h2 v-if="this.level == 0">Уровень 1 завершён</h2>
     <h2 v-else-if="this.level == 1">Уровень 2 завершён</h2>
     <h2 v-else-if="this.level == 2">Уровень 3 завершён</h2>
@@ -7,9 +7,9 @@
     <hr>
     <h3>Правильные ответы  : {{ stats.lvl_success }}</h3>
     <h3>Неправильные ответы  : {{ stats.lvl_errors }}</h3>
-    <button class="btn btn-outline-primary" @click="$emit('again')"><i class="fas fa-redo"></i><span class="left">Начать сначала</span></button>
-    <button class="btn btn-outline-success" @click="$emit('next')" v-if="this.hide === false" style="float:right"><span class="right">Новый уровень</span><i class="fas fa-caret-right"></i></button>
-  </div>
+    <v-btn color="primary" @click="$emit('again')"><i class="fas fa-redo"></i><span class="left">Начать сначала</span></v-btn>
+    <v-btn color="green" @click="$emit('next')" v-if="this.hide === false" style="float:right"><span class="right">Новый уровень</span><i class="fas fa-caret-right"></i></v-btn>
+  </v-alert>
 </template>
 
 <script>
@@ -43,6 +43,10 @@
   }
   .alert{
     padding-top: 20px;
+    padding-right: 35px;
+  }
+  .alert .alert__icon.icon, .alert__dismissible .icon {
+    padding-right: 10px;
   }
   .left{
     padding-left: 10px;
@@ -53,10 +57,15 @@
   .svg-inline--fa.fa-w-6 {
     width: .375em;
     font-size: 20px;
+    color:white;
   }
   .btn{
     margin: 5px;
-    margin-top: 15px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
+  span{
+    color:white;
   }
   @media (max-width: 870px) {
     .alert h2{

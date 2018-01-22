@@ -1,11 +1,11 @@
 <template>
-  <div class="alert alert-dark">
-      <h3 class="alert-heading">{{x}} + {{y}} = ?</h3>
+  <v-alert color="green darken-3" :value="true">
+      <h3>{{x}} + {{y}} = ?</h3>
       <hr>
       <div class="buttons">
-          <button class="btn btn-success" v-for="number in answers" @click="Answer(number)">{{number}}</button>
+          <v-btn round color="light-blue accent-3" v-for="number in answers" :key="number" @click="Answer(number)">{{number}}</v-btn>
       </div>
-  </div>
+    </v-alert>
 </template>
 
 <script>
@@ -66,7 +66,7 @@
     .buttons{
         display: flex;
         justify-content: space-around;
-        padding-top: 20px;
+        padding-top: 25px;
     }
     .btn{
         width: 15%;
@@ -74,11 +74,8 @@
         border-radius: 10px;
     }
     h3{
-        display: inline;
-    }
-    .timer{
-        float: right;
-        font-size: 15px;
-        padding-top: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
     }
 </style>
