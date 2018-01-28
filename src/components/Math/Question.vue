@@ -78,4 +78,15 @@
         margin-bottom: 20px;
         font-size: 20px;
     }
+    @media (max-width: 640px) {
+    .btn{
+        width: 19vw;
+    }
+    .buttons{
+        display: block;
+    }
+    .train{
+       width: 100vw;
+    }
+  }
 </style>

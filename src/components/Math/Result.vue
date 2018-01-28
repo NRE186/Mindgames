@@ -7,8 +7,8 @@
     <hr>
     <h3>Правильные ответы  : {{ stats.lvl_success }}</h3>
     <h3>Неправильные ответы  : {{ stats.lvl_errors }}</h3>
-    <v-btn color="primary" @click="$emit('again')"><i class="fas fa-redo"></i><span class="left">Начать сначала</span></v-btn>
-    <v-btn color="green" @click="$emit('next')" v-if="this.hide === false" style="float:right"><span class="right">Новый уровень</span><i class="fas fa-caret-right"></i></v-btn>
+    <v-btn color="primary" @click="$emit('again')"><i class="fas fa-redo left_i"></i><span class="left">Начать сначала</span></v-btn>
+    <v-btn color="green" @click="$emit('next')" v-if="this.hide === false" style="float:right"><span class="right">Новый уровень</span><i class="fas fa-caret-right right_i"></i></v-btn>
   </v-alert>
 </template>
 
@@ -73,6 +73,11 @@
     }
     .alert h3{
       font-size: 22px;
+    }
+  }
+  @media (max-width: 640px) {
+    .btn{
+      width: 100%;
     }
   }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      temporary
       clipped
       fixed
       v-model="drawer"
@@ -45,46 +46,32 @@
                   <h4>Очки : {{ this.stats.score }}</h4>
                   <span class="multiplier">x{{ this.stats.multiplier }}</span>
                   <h4 class="hearts" v-if="this.stats.errors === 0">
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
                   </h4>
                   <h4 class="hearts" v-else-if="this.stats.errors === 1">
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
                   </h4>
                   <h4 class="hearts" v-else-if="this.stats.errors === 2">
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
                   </h4>
                   <h4 class="hearts" v-else-if="this.stats.errors === 3">
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
                   </h4>
                   <h4 class="hearts" v-else-if="this.stats.errors === 4">
-                    <span class="heart"><i class="fas fa-heart"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="heart"><v-icon>fa-heart</v-icon></span>
                   </h4>
                   <h4 class="hearts" v-else-if="this.stats.errors === 5">
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
-                    <span class="cross"><i class="fas fa-times"></i></span>
+                    <span class="cross"><v-icon>fa-heart</v-icon></span>
                   </h4></v-alert>
                 <v-progress-linear v-model="progress.width" height="12" color="success"></v-progress-linear>
                 <div class="box">
@@ -144,7 +131,7 @@ export default {
         icon: ''
       },
       // Value of levels and number first level 0=1, 1=2 and etc
-      questMax: 3,
+      questMax: 15,
       level: 0,
       // Levels settings
       levels: [
@@ -313,10 +300,10 @@ export default {
     top: 15px;
     right: 20px;
   }
-  .heart{
+  .fa-heart{
     color: #3be218;
   }
-  .cross{
+  .cross .fa-heart{
     color: red;
   }
   .box{

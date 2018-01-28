@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      temporary
       clipped
       fixed
       v-model="drawer"
