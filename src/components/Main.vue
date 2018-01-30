@@ -23,7 +23,9 @@
                     Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
                   </v-card-text>
                   <v-card-actions>
-                    <router-link to="/math"><v-btn color="green" class="mb-4" dark>Начать</v-btn></router-link>
+                    <v-spacer></v-spacer>
+                    <router-link to="/math"><v-btn color="green btn_a" class="mb-4" dark outline>Начать</v-btn></router-link>
+                    <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-flex>
@@ -40,7 +42,9 @@
                     Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
                   </v-card-text>
                   <v-card-actions >
-                    <router-link to="/programming"><v-btn color="green" class="mb-4" dark>Начать</v-btn></router-link>
+                    <v-spacer></v-spacer>
+                    <v-btn color="grey darken-3" class="mb-4 btn_d" dark>В разработке</v-btn>
+                    <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-flex>
@@ -57,7 +61,9 @@
                     Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
                   </v-card-text>
                   <v-card-actions >
-                    <router-link to="/history"><v-btn color="green" class="mb-4" dark>Начать</v-btn></router-link>
+                    <v-spacer></v-spacer>
+                    <v-btn color="grey darken-3" class="mb-4 btn_d" dark>В разработке</v-btn>
+                    <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-flex>
@@ -74,7 +80,9 @@
                     Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
                   </v-card-text>
                   <v-card-actions >
-                    <router-link to="/ict"><v-btn color="green" class="mb-4" dark>Начать</v-btn></router-link>
+                    <v-spacer></v-spacer>
+                    <v-btn color="grey darken-3" class="mb-4 btn_d" dark>В разработке</v-btn>
+                    <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-flex>
@@ -98,4 +106,10 @@ export default {
 </script>
 
 <style scoped>
+a{
+  color: transparent !important;
+}
+.card__text{
+      margin-bottom: 20px;
+}
 </style>

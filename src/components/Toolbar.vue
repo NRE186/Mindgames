@@ -58,7 +58,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="register = false">Зарегистрироваться</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="register = false">Зарегистрироваться</v-btn>
+          <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -74,7 +75,7 @@
         <v-card-title>
           <span class="headline">Вход </span>
           <v-spacer></v-spacer>
-            <v-btn color="red accent-4" flat @click.native="register = false" class="right"><v-icon>fa-times</v-icon></v-btn>
+            <v-btn color="red accent-4" flat @click.native="login = false" class="right"><v-icon>fa-times</v-icon></v-btn>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
@@ -91,6 +92,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="login = false">Войти на сайт</v-btn>
+          <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
     </v-dialog>
