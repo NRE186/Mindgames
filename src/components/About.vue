@@ -1,40 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      temporary
-      clipped
-      fixed
-      v-model="drawer"
-      app
-      dark
-    >
-      <v-list>
-        <v-list-tile
-          v-for="item in menuItems"
-          :key="item.title"
-          :to="item.link">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar app fixed clipped-left class="purple darken-4">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <router-link to="/" tag="span" style="cursor: pointer" class="ml-3">Mindgames</router-link>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn
-          flat
-          v-for="item in toolbar"
-          :key="item.title"
-          :to="item.link">
-          <v-icon left dark>{{ item.icon }}</v-icon>
-          {{ item.title }}
-        </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+    <toolbar></toolbar>
     <v-content>
       <v-layout
         column
@@ -47,9 +13,9 @@
             <span class="authors">Авторы</span>
         </div>
         <v-flex xs12>
-          <v-container grid-list-xl fluid>
+          <v-container grid-list-xl>
             <v-layout row wrap align-center>
-              <v-flex xs4 md4 lg4 class="left">
+              <v-flex xs12 md4 lg4 class="left">
                 <v-card class="elevation-5" color="indigo accent-3">
                   <v-card-media src="/src/assets/web.jpg" height="300px">
                   </v-card-media>
@@ -62,7 +28,7 @@
                   </v-card-text>
                 </v-card>
               </v-flex>
-              <v-flex xs4 md4 lg4 class="right">
+              <v-flex xs12 md4 lg4 class="right">
                 <v-card class="elevation-5" color="indigo accent-3">
                   <v-card-media src="/src/assets/Joshua.jpg" height="300px">
                   </v-card-media>
@@ -88,33 +54,12 @@ export default {
   name : 'about',
     data () {
       return {
-        drawer: false,
-        menuItems: [
-          {icon: 'fa-address-book', title: 'О нас', link: '/about'},
-          {icon: 'fa-list-ul', title: 'Список рекордов', link: '/records'},
-          {icon: 'fa-user-plus', title: 'Регистрация', link: '/register'},
-          {icon: 'fa-sign-in-alt', title: 'Вход', link: '/login'}
-        ],
-        toolbar: [
-          {icon: 'fa-user-plus', title: 'Регистрация', link: '/register'},
-          {icon: 'fa-sign-in-alt', title: 'Вход', link: '/login'}
-        ]
       }
     }
 }
 </script>
 
 <style scoped>
-  a{
-    color: white !important;
-  }
-  .toolbar__content .router-link-active{
-    font-size: large;
-    color: white !important;
-  }
-  .toolbar__side-icon {
-    color: white !important;
-  }
   .authors{
       font-size: 26px;
   }
@@ -133,4 +78,22 @@ export default {
   .right{
     margin-left: 145px;
   }
+  @media (max-width: 1550px) {
+      .left{
+        margin-right: 0;
+        margin-left: 40px;
+      }
+      .right{
+        margin-left:330px;
+      }
+   }
+     @media (max-width: 1260px) {
+      .left{
+        margin-right: 0;
+        margin-left: 0;
+      }
+      .right{
+        margin-left:200px;
+      }
+   }
 </style>

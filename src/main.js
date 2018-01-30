@@ -3,6 +3,7 @@ import Vuetify from 'vuetify'
 import App from './App.vue'
 import router from './router'
 
+import Toolbar from './components/Toolbar.vue'
 import MainScreen from './components/Main.vue'
 import MathMain from './components/Math/Math.vue'
 import MathStartScreen from './components/Math/StartScreen.vue'
@@ -12,7 +13,8 @@ import MathResult from './components/Math/Result.vue'
 
 Vue.use(Vuetify);
 
-Vue.component('MainScreen',MainScreen);
+Vue.component('Toolbar', Toolbar);
+Vue.component('MainScreen', MainScreen);
 Vue.component('MathMain', MathMain);
 Vue.component('MathStartScreen', MathStartScreen);
 Vue.component('MathMessage', MathMessage);
