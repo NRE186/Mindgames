@@ -6,19 +6,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "start": "node server.js"
+    "start": "node client/server.js"
   },
   "dependencies": {
-    "axios": "^0.17.1",
     "express": "^4.16.2",
     "path": "^0.12.7",
     "serve-static": "^1.13.1",
-    "style-loader": "^0.19.1",
-    "vue": "^2.5.13",
-    "vue-router": "^3.0.1",
-    "vuetify": "^0.17.6"
+    "style-loader": "^0.19.1"
   },
   "browserslist": [
     "> 1%",
