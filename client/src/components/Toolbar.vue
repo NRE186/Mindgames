@@ -26,7 +26,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
       <v-layout row justify-center>
-    <v-dialog v-model="register" persistent max-width="500px">
+    <v-dialog v-model="register_form" persistent max-width="500px">
         <v-btn slot="activator" class="btn_m">
           <v-icon class="i_m">fa-user-plus</v-icon>
           Регистрация
@@ -35,22 +35,44 @@
         <v-card-title>
           <span class="headline">Регистрация</span>
           <v-spacer></v-spacer>
-          <v-btn color="red accent-4" flat @click.native="register = false" class="right"><v-icon>fa-times</v-icon></v-btn>
+          <v-btn color="red accent-4" flat @click.native="register_form = false" class="right"><v-icon>fa-times</v-icon></v-btn>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 sm12 md12>
-                <v-text-field label="Никнейм" required></v-text-field>
+                <v-text-field 
+                label="Никнейм"
+                name="username"
+                v-model="username"
+                required>
+                </v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field label="Email" required></v-text-field>
+                <v-text-field 
+                label="Email"
+                name="email"
+                v-model="email"
+                required>
+                </v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field label="Пароль" type="password" required></v-text-field>
+                <v-text-field 
+                label="Пароль"
+                name="password"
+                v-model="password"
+                type="password" 
+                required>
+                </v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field label="Повторите пароль" type="password" required></v-text-field>
+                <v-text-field 
+                label="Повторите пароль" 
+                name="s_pass"
+                v-model="s_pass"
+                type="password" 
+                required>
+                </v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -58,7 +80,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="register = false">Зарегистрироваться</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="register">Зарегистрироваться</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -66,7 +88,7 @@
   </v-layout>
 
   <v-layout row justify-center>
-    <v-dialog v-model="login" persistent max-width="500px">
+    <v-dialog v-model="login_form" persistent max-width="500px">
         <v-btn slot="activator" class="btn_m">
           <v-icon class="i_m">fa-sign-in-alt</v-icon>
           Вход
@@ -75,7 +97,7 @@
         <v-card-title>
           <span class="headline">Вход </span>
           <v-spacer></v-spacer>
-            <v-btn color="red accent-4" flat @click.native="login = false" class="right"><v-icon>fa-times</v-icon></v-btn>
+            <v-btn color="red accent-4" flat @click.native="login_form = false" class="right"><v-icon>fa-times</v-icon></v-btn>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
@@ -91,7 +113,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="login = false">Войти на сайт</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="login_form = false">Войти на сайт</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -103,22 +125,38 @@
 </template>
 
 <script>
+import AuthService from '../services/AuthService'
 export default {
   name: "toolbar",
   data() {
     return {
+      username: '',
+      email: '',
+      password: '',
+      s_pass: '',
       drawer: false,
-      register: false,
-      login: false,
+      register_form: false,
+      login_form: false,
       menuItems: [
         { icon: "fa-address-book", title: "О нас", link: "/about" },
         { icon: "fa-list-ul", title: "Список рекордов", link: "/records" },
         { icon: "fa-user-plus", title: "Регистрация", link: "/register" },
         { icon: "fa-sign-in-alt", title: "Вход", link: "/login" }
       ]
-    };
+    }
+  },
+  methods:{
+    async register(){
+      const response = await AuthService.register({
+        username : this.username,
+        email : this.email,
+        password :this.password,
+        s_pass : this.s_pass
+      })
+      console.log(response.data)
+    }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -131,6 +169,9 @@ a {
 }
 .toolbar__side-icon {
   color: white !important;
+}
+aside{
+  width: 275px !important;
 }
 small {
   color: red;

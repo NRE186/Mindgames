@@ -2,6 +2,15 @@
   <v-app>
       <toolbar></toolbar>
       <v-content>
+        <v-layout
+        column
+        wrap
+        align-center
+        row 
+        justify-space-between
+      >
+      <span class="s_title">{{subject}}</span>
+      <v-flex xs12>
     <v-data-table
       v-bind:headers="headers"
       :items="items"
@@ -16,6 +25,8 @@
       <td class="text-xs-right">{{ props.item.date }}</td>
     </template>
   </v-data-table>
+      </v-flex>
+        </v-layout>
       </v-content>
   </v-app>
 </template>
@@ -25,7 +36,8 @@ export default {
   name : 'records',
   data () {
       return {
-        rows:[25, 50, 100, { text: "Все", value: -1 }],
+        subject: 'Математика',
+        rows:[15, 30, 60, 90, 120, 150, { text: "Все", value: -1 }],
         headers: [
           {
             text: 'Место',
@@ -305,6 +317,10 @@ export default {
 </script>
 
 <style scoped>
-
+.s_title{
+  font-size: 24px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 </style>
 

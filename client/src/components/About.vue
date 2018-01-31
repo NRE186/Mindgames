@@ -28,6 +28,7 @@
                   </v-card-text>
                 </v-card>
               </v-flex>
+              <v-spacer></v-spacer>
               <v-flex xs12 md4 lg4 class="right">
                 <v-card class="elevation-5" color="indigo accent-3">
                   <v-card-media src="/src/assets/Joshua.jpg" height="300px">
@@ -71,7 +72,7 @@ export default {
       padding-bottom: 35px;
       font-size: 16px;
   }
-  .left{
+/*   .left{
     margin-right: 300px;
     margin-left: 85px;
   }
@@ -95,5 +96,5 @@ export default {
       .right{
         margin-left:200px;
       }
-   }
+   } */
 </style>
