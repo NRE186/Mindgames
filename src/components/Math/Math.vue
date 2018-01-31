@@ -58,11 +58,11 @@
 
 <script>
 export default {
-  name: 'math',
+  name: "math",
   data() {
     return {
       // First state
-      state: 'start',
+      state: "start",
       // Stats for result component
       stats: {
         lvl_success: 0,
@@ -71,19 +71,19 @@ export default {
         errors: 0,
         score: 0,
         gameOver: false,
-        multiplier : 1
+        multiplier: 1
       },
-      points : {
-        one : 100,
-        two : 200,
-        three : 300,
-        four : 400
+      points: {
+        one: 100,
+        two: 200,
+        three: 300,
+        four: 400
       },
       // Message template
       message: {
-        type: '',
-        text: '',
-        icon: ''
+        type: "",
+        text: "",
+        icon: ""
       },
       // Value of levels and number first level 0=1, 1=2 and etc
       questMax: 15,
@@ -102,53 +102,53 @@ export default {
           to: 1000,
           range: 100,
           variants: 4,
-          variables : 4
+          variables: 4
         },
         {
           from: 1000,
           to: 5000,
           range: 245,
           variants: 6,
-          variables : 5
+          variables: 5
         },
         {
           from: 5000,
           to: 50000,
           range: 750,
           variants: 8,
-          variables : 6
+          variables: 6
         }
       ]
-    }
+    };
   },
   // This method needs for wathcing for user errors and if he've done 5 errors he'll lose
   watch: {
     stats: {
       handler: function(newValue) {
-        if (newValue.errors === 5){
-          this.state = 'result';
+        if (newValue.errors === 5) {
+          this.state = "result";
           this.stats.gameOver = true;
         }
       },
       deep: true
     }
   },
-  computed:{
+  computed: {
     // Calculate success and errors
-    questDone(){
-      return this.stats.lvl_success  + this.stats.lvl_errors;
+    questDone() {
+      return this.stats.lvl_success + this.stats.lvl_errors;
     },
     // Calculate width for progress bar
-    progress(){
-      return{
-        width: (this.questDone / this.questMax * 100)
+    progress() {
+      return {
+        width: this.questDone / this.questMax * 100
       };
     }
   },
   methods: {
     // Start
-    Start(){
-      this.state = 'question';
+    Start() {
+      this.state = "question";
       this.stats.success = 0;
       this.stats.errors = 0;
       this.stats.lvl_success = 0;
@@ -159,51 +159,51 @@ export default {
       this.progress.width = 0;
     },
     // If everything good to switch to a new question and final score
-    Success: function () {
-      this.state = 'message';
-      this.message.text = 'Правильный ответ';
-      this.message.type = 'success';
-      this.message.icon = 'check_circle';
+    Success: function() {
+      this.state = "message";
+      this.message.text = "Правильный ответ";
+      this.message.type = "success";
+      this.message.icon = "check_circle";
       this.stats.success++;
       this.stats.lvl_success++;
       if (this.level === 0) {
-        this.stats.score = this.stats.score + (this.points.one * this.stats.multiplier);
+        this.stats.score =
+          this.stats.score + this.points.one * this.stats.multiplier;
+      } else if (this.level === 1) {
+        this.stats.score =
+          this.stats.score + this.points.two * this.stats.multiplier;
+      } else if (this.level === 2) {
+        this.stats.score =
+          this.stats.score + this.points.three * this.stats.multiplier;
+      } else {
+        this.stats.score =
+          this.stats.score + this.points.four * this.stats.multiplier;
       }
-      else if (this.level === 1) {
-        this.stats.score = (this.stats.score + (this.points.two) * this.stats.multiplier);
-      }
-      else if (this.level === 2) {
-        this.stats.score = (this.stats.score + (this.points.three) * this.stats.multiplier);
-      }
-      else {
-        this.stats.score = (this.stats.score + (this.points.four) * this.stats.multiplier);
-      }
-      if (this.stats.multiplier < 5){
+      if (this.stats.multiplier < 5) {
         this.stats.multiplier = this.stats.multiplier + 0.5;
       }
     },
     // If everything bad to switch to a new question and calculate errors and hearts
-    Error(msg){
-      this.state = 'message';
+    Error(msg) {
+      this.state = "message";
       this.message.text = msg;
-      this.message.type = 'error';
-      this.message.icon = 'warning'
+      this.message.type = "error";
+      this.message.icon = "warning";
       this.stats.errors++;
       this.stats.lvl_errors++;
       this.stats.multiplier = 1;
     },
     // Next lvl if they have or result
-    next(){
-      if(this.questDone < this.questMax){
-        this.state = 'question';
-      }
-      else{
-        this.state = 'result';
+    next() {
+      if (this.questDone < this.questMax) {
+        this.state = "question";
+      } else {
+        this.state = "result";
       }
     },
     // Method for switch beetween levels
-    nextLevel(){
-      this.state = 'question';
+    nextLevel() {
+      this.state = "question";
       this.level++;
       this.stats.lvl_success = 0;
       this.stats.lvl_errors = 0;
@@ -211,99 +211,107 @@ export default {
       this.progress.width = 0;
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .train{
-    width: 50vw;
-    margin-top: 4vh;
-  }
-  .progress-linear__background{
-    border-radius: 15px;
-  }
+.train {
+  width: 50vw;
+  margin-top: 4vh;
+}
+.progress-linear__background {
+  border-radius: 15px;
+}
 
-  .info{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 1px solid;
+.info {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid;
+}
+.info h4 {
+  color: white !important;
+  margin-top: 4px;
+  font-size: 19px;
+}
+.multiplier {
+  position: absolute;
+  top: 17px;
+  right: 450px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.hearts {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.fa-heart {
+  color: #3be218;
+}
+.cross .fa-heart {
+  color: red;
+}
+.box {
+  margin: 15px 0;
+}
+.flip-enter-active {
+  animation: flipInX 0.3s linear;
+}
+.flip-leave-active {
+  animation: flipOutX 0.3s linear;
+}
+@keyframes flipInX {
+  from {
+    transform: rotateX(90deg);
   }
-  .info h4{
-    color: white !important;
-    margin-top: 4px;
-    font-size: 19px;
+  to {
+    transform: rotateX(0deg);
   }
-  .multiplier{
-    position: absolute;
-    top: 17px;
-    right: 450px;
-    font-size: 22px;
-    font-weight: bold;
+}
+@keyframes flipOutX {
+  from {
+    transform: rotateX(0deg);
   }
-  .hearts{
-    position: absolute;
-    top: 15px;
-    right: 20px;
+  to {
+    transform: rotateX(90deg);
   }
-  .fa-heart{
-    color: #3be218;
+}
+@media (max-width: 1300px) {
+  .multiplier {
+    display: none;
   }
-  .cross .fa-heart{
-    color: red;
+  .train {
+    width: 65vw;
   }
-  .box{
-    margin: 15px 0;
+}
+@media (max-width: 1000px) {
+  .train {
+    width: 70vw;
   }
-  .flip-enter-active{
-    animation: flipInX 0.3s linear;
+}
+@media (max-width: 770px) {
+  .train {
+    width: 75vw;
   }
-  .flip-leave-active{
-    animation: flipOutX 0.3s linear;
+}
+@media (max-width: 630px) {
+  .train {
+    width: 80vw;
   }
-  @keyframes flipInX{
-    from{transform: rotateX(90deg);}
-    to{transform: rotateX(0deg);}
+}
+@media (max-width: 550px) {
+  .train {
+    width: 85vw;
   }
-  @keyframes flipOutX{
-    from{transform: rotateX(0deg);}
-    to{transform: rotateX(90deg);}
+}
+@media (max-width: 510px) {
+  .train {
+    width: 90vw;
   }
-   @media (max-width: 1300px) {
-      .multiplier{
-        display: none;
-      }
-      .train{
-        width: 65vw;
-      }
-   }
-      @media (max-width: 1000px) {
-      .train{
-        width: 70vw;
-      }
-   }
-      @media (max-width: 770px) {
-      .train{
-        width: 75vw;
-      }
-   }
-      @media (max-width: 630px) {
-      .train{
-        width: 80vw;
-      }
-   }
-      @media (max-width: 550px) {
-      .train{
-        width: 85vw;
-      }
-   }
-      @media (max-width: 510px) {
-      .train{
-        width: 90vw;
-      }
-   }
-      @media (max-width: 430px) {
-      .train{
-        width: 100vw;
-      }
-   } 
+}
+@media (max-width: 430px) {
+  .train {
+    width: 100vw;
+  }
+}
 </style>

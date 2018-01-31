@@ -104,50 +104,50 @@
 
 <script>
 export default {
-  name : 'toolbar',
-    data () {
-      return {
-        drawer: false,
-        register: false,
-        login: false,
-        menuItems: [
-          {icon: 'fa-address-book', title: 'О нас', link: '/about'},
-          {icon: 'fa-list-ul', title: 'Список рекордов', link: '/records'},
-          {icon: 'fa-user-plus', title: 'Регистрация', link: '/register'},
-          {icon: 'fa-sign-in-alt', title: 'Вход', link: '/login'}
-        ]
-      }
-    }
-}
+  name: "toolbar",
+  data() {
+    return {
+      drawer: false,
+      register: false,
+      login: false,
+      menuItems: [
+        { icon: "fa-address-book", title: "О нас", link: "/about" },
+        { icon: "fa-list-ul", title: "Список рекордов", link: "/records" },
+        { icon: "fa-user-plus", title: "Регистрация", link: "/register" },
+        { icon: "fa-sign-in-alt", title: "Вход", link: "/login" }
+      ]
+    };
+  }
+};
 </script>
 
 <style scoped>
-    a{
-    color: white !important;
-  }
-  .toolbar__content .router-link-active{
-    font-size: large;
-    color: white !important;
-  }
-  .toolbar__side-icon {
-    color: white !important;
-  }
-  small{
-    color: red;
-  }
-  .i_m{
-    margin-right: 15px;
-  }
-  .btn_m{
-    box-shadow: none;
-    background-color: transparent !important;
-    color: white;
-    height: 50px;
-  }
-  .right{
-    padding-left: 50px;
-  }
-  .right svg{
-    font-size: 18px;
-  }
+a {
+  color: white !important;
+}
+.toolbar__content .router-link-active {
+  font-size: large;
+  color: white !important;
+}
+.toolbar__side-icon {
+  color: white !important;
+}
+small {
+  color: red;
+}
+.i_m {
+  margin-right: 15px;
+}
+.btn_m {
+  box-shadow: none;
+  background-color: transparent !important;
+  color: white;
+  height: 50px;
+}
+.right {
+  padding-left: 50px;
+}
+.right svg {
+  font-size: 18px;
+}
 </style>
