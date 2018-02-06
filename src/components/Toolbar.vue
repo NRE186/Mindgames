@@ -76,11 +76,11 @@
               </v-flex>
             </v-layout>
           </v-container>
-          <small>*поля обязательные к заполнению</small>
+          <small style="padding-left: 7px;">*поля обязательные к заполнению</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="register">Зарегистрироваться</v-btn>
+            <v-btn color="blue darken-1" @click.native="register" class="mb-4">Зарегистрироваться</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -113,7 +113,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="login_form = false">Войти на сайт</v-btn>
+          <v-btn color="blue darken-1" @click.native="login_form = false" class="mb-4">Войти на сайт</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -190,5 +190,8 @@ small {
 }
 .right svg {
   font-size: 18px;
+}
+div.btn__content::after{
+  content: none;
 }
 </style>
