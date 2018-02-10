@@ -1,8 +1,8 @@
 {
   "name": "Mindgames",
   "description": "A Vue.js project",
-  "version": "1.0.0",
-  "author": "Web_Developer186 <TheTroller186@gmail.com>",
+  "version": "1.0.2",
+  "author": "Web_Developer186 <Web_Developer186@mail.ru>",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
     "connect-history-api-fallback": "^1.5.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "mongoose": "^5.0.4",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "serve-static": "^1.13.1",

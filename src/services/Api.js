@@ -3,6 +3,6 @@ import axios from 'axios';
 
 export default() => {
     return axios.create({
-        url: "http://localhost:5000"
+        url: 'http://localhost:5000'
     })
 }
