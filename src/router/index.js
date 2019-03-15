@@ -37,12 +37,12 @@ const router = new Router({
       path: '/auth',
       name: 'Auth',
       component: Auth
-    },
-    {
-      path: '/*',
-      name: 'NotFound',
-      component: NotFound
     }
+    // {
+    //   path: '/*',
+    //   name: 'NotFound',
+    //   component: NotFound
+    // }
   ]
 })
 

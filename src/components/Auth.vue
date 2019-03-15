@@ -14,3 +14,25 @@
       </v-content>
   </v-app>
 </template>
+
+<script>
+import AuthService from '../services/AuthService'
+  export default {
+    name: 'Auth',
+    data () {
+      return {
+        posts: []
+      }
+    },
+    methods: {
+      async getData () {
+        const response = await AuthService.auth()
+        this.posts = response.data
+      }
+    },
+    mounted () {
+      this.getData()
+    }
+  }
+</script>
+

@@ -22,12 +22,16 @@ app.use(serveStatic(path.join(__dirname, '..')))
 
 
 /* Routes */
-app.post('/api/register', (req, res) => {
-    res.send({
-        message: `Hello ${req.body.email}! Your user was registered! Have fun!`
-    })
-})
+app.get('/auth', (req, res) => {
+    console.log('/posts working')
+    res.send(
+      [{
+        title: "Hello World!",
+        description: "Hi there! How are you?"
+      }]
+    )
+  })
 
 
-app.listen(port);
-console.log(`Server start on port ${config.port} ...`);
+  app.listen(process.env.PORT || config.port,
+    () => console.log(`Server start on port ${config.port} ...`))

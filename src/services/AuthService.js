@@ -2,7 +2,7 @@
 import Api from '../services/Api'
 
 export default{
-    register(){
-        return Api().post('/register');
+    auth(){
+        return Api().get('auth');
     }
 }
